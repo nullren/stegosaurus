@@ -1,9 +1,10 @@
-function = encode(imgFileName, dataFileName, outFileName)
+function I = encode(imgFileName, dataFileName, outFileName)
 % encode takes 3 parameters: imgFileName, dataFileName, outFileName
 % imgFileName is the path to the image file you will use to do
 % whatever.
 % dataFileName is the path to the file of data you want to encode.
 % outFileName is the output file.
+% returns image data as a matrix
 
 % read file
 I = imread(imgFileName);
