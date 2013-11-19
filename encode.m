@@ -45,8 +45,13 @@ dataBin = [dataBin ; zeros(sizeOfSpace - size(dataBin, 1), 1)];
 % shape into matrix like the image
 dataBin = reshape(dataBin, x, y, channels);
 
-% do nothing special except add
-I = I + dataBin;
+% this matrix contains the average bit value of each pixel
+J = sum((dec2bin(I(:))-"0")')>3;
+J = reshape(J, x, y, channels);
+
+% xor everything and add it to the image. this creates a sort of
+% 'ghost' of the original image in our LSBs
+I = I + bitxor(J, dataBin);
 
 % write file
 imwrite(I, outFileName);
