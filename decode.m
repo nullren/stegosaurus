@@ -5,6 +5,11 @@ function output = decode(imgData)
 % get LSBs
 dataBin = bitget(imgData(:), 1);
 
+% remove xor'd data
+I = bitset(imgData, 1, 0);
+J = (sum((dec2bin(I(:))-"0")')>3)';
+dataBin = bitxor(J, dataBin);
+
 % first 32 bits should be data
 count = bin2dec(char(dataBin(1:32) + "0")');
 
