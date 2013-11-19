@@ -26,6 +26,6 @@ end
 % now put data into a matrix with same dimensions as I1
 dataBin = dec2bin(data, 8)(:) - "0";
 % out of memory
-dataBin = [dataBin ; zeros(sizeOfSpace - size(dataBin, 1))];
+dataBin = [dataBin ; zeros(sizeOfSpace - size(dataBin, 1), 1)];
 
 I = I + reshape(dataBin, x, y, channels);
