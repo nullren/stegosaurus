@@ -1,4 +1,7 @@
-function output = decode(imgData)
+function output = decode(imgFileName)
+% decode needs to be fed an image to search things from.
+
+imgData = imread(imgFileName);
 % reads first 32 LSBs to find out many bits we need to look up. then
 % returns those decoded as a string.
 

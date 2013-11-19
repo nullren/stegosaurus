@@ -1,7 +1,9 @@
-function I = encode(imgFileName, dataFileName)
-% if there are errors, we'll let functions throw them then catch them
-% outside of this encode function. or else, we should throw extra
-% errors for things. lol
+function = encode(imgFileName, dataFileName, outFileName)
+% encode takes 3 parameters: imgFileName, dataFileName, outFileName
+% imgFileName is the path to the image file you will use to do
+% whatever.
+% dataFileName is the path to the file of data you want to encode.
+% outFileName is the output file.
 
 % read file
 I = imread(imgFileName);
@@ -39,3 +41,6 @@ I = I + bitxor(J, dataBin);
 
 % do nothing special
 %I = I + dataBin;
+
+% write file
+imwrite(I, outFileName);
