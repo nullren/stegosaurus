@@ -1,10 +1,19 @@
-function I = encode(imgFileName, dataFileName, outFileName)
-% encode takes 3 parameters: imgFileName, dataFileName, outFileName
-% imgFileName is the path to the image file you will use to do
-% whatever.
-% dataFileName is the path to the file of data you want to encode.
-% outFileName is the output file.
-% returns image data as a matrix
+function encode(imgFileName, dataFileName, outFileName)
+% function encode(imgFileName, dataFileName, outFileName)
+%
+% imgFileName:  the path to the image file you want to use as a base
+%               for the encoding.
+%
+% dataFileName: the path to the file containing the data you want to
+%               encode inside `imgFileName`.
+%
+% outFileName:  the path to the resulting image.
+%
+% note that the size of file at the location of `dataFileName` needs
+% to contain less bits (bytes/8) than the number of pixels in
+% `imgFileName` in each available color. e.g., for black and white
+% photos, there is only one channel; RGB photos have 3 channels; CMYK
+% photos have 4 channels.
 
 % read file
 I = imread(imgFileName);
