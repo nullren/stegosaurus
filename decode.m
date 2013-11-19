@@ -31,6 +31,6 @@ outfh = fopen(outFileName, "w");
 outcnt = fwrite(outfh, output);
 fclose(outfh);
 
-if outcnt < size(output, 2)
+if outcnt != size(output, 2)
   error('decode', "did not write the same bytes as output")
 end
