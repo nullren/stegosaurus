@@ -15,8 +15,9 @@ function encode(imgFileName, dataFileName, outFileName)
 % photos, there is only one channel; RGB photos have 3 channels; CMYK
 % photos have 4 channels.
 
-% read file
+% read file and set some useful info
 I = imread(imgFileName);
+[x, y, channels] = size(I);
 
 % set LSBs to 0
 I = bitset(I, 1, 0);
@@ -27,9 +28,8 @@ dataFile = fopen(dataFileName);
 fclose(dataFile);
 
 % makesure our payload will fit in our image
-[x, y, channels] = size(I);
 sizeOfSpace = x*y*channels;
-sizeOfPayload = count*8;
+sizeOfPayload = count*8 + 32;
 
 if sizeOfPayload > sizeOfSpace
   error('encode', "payload is too large for this image")
