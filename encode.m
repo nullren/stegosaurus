@@ -25,7 +25,7 @@ end
 
 % now put data into a matrix with same dimensions as I1
 dataBin = dec2bin(data, 8)(:) - "0";
-countBin = dec2bin(count, 32)(:) - "0";
+countBin = dec2bin(sizeOfPayload, 32)(:) - "0";
 % out of memory
 dataBin = [countBin; dataBin ; zeros(sizeOfSpace - size(dataBin, 1) - size(countBin,1), 1)];
 
